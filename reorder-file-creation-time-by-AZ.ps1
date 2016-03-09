@@ -16,6 +16,8 @@ Function ScanDir($scanPath){
         $ct = $creationTimes[$i]
         $fd = Get-Item $fn
         Write-Host "-- $($fd.Name) --     $($fd.CreationTime) => $ct"
+        $fd.CreationTime = $ct
+        $fd.LastWriteTime = $ct
     }
     
     $subDirectories = Get-ChildItem $scanPath | Where-Object {$_.PSIsContainer}
